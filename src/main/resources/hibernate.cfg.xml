@@ -19,5 +19,7 @@
         <property name="hibernate.jdbc.time_zone">Europe/Astrakhan</property>
 
         <mapping class="ru.job4j.hql.Candidate"/>
+        <mapping class="ru.job4j.hql.Job"/>
+        <mapping class="ru.job4j.hql.JobDatabase"/>
     </session-factory>
 </hibernate-configuration>

@@ -16,6 +16,9 @@ public class Candidate {
 
     private int salary;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private JobDatabase jobDatabase;
+
     public static Candidate of(String name, int experience, int salary) {
         Candidate candidate = new Candidate();
         candidate.name = name;
@@ -56,6 +59,14 @@ public class Candidate {
         this.salary = salary;
     }
 
+    public JobDatabase getJobDatabase() {
+        return jobDatabase;
+    }
+
+    public void setJobDatabase(JobDatabase jobDatabase) {
+        this.jobDatabase = jobDatabase;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -66,16 +77,18 @@ public class Candidate {
         }
         Candidate candidate = (Candidate) o;
         return id == candidate.id && experience == candidate.experience
-                && salary == candidate.salary && Objects.equals(name, candidate.name);
+                && salary == candidate.salary && Objects.equals(name, candidate.name)
+                && Objects.equals(jobDatabase, candidate.jobDatabase);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, experience, salary);
+        return Objects.hash(id, name, experience, salary, jobDatabase);
     }
 
     @Override
     public String toString() {
-        return String.format("Candidate: id=%s, name=%s, experience=%s, salary=%s", id, name, experience, salary);
+        return String.format("Candidate: id=%s, name=%s, experience=%s, salary=%s, jobDatabase=%s",
+                id, name, experience, salary, jobDatabase);
     }
 }
