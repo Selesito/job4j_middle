@@ -18,5 +18,6 @@
         <property name="use_sql_comments">true</property>
         <property name="hibernate.jdbc.time_zone">Europe/Astrakhan</property>
 
+        <mapping class="ru.job4j.hql.Candidate"/>
     </session-factory>
 </hibernate-configuration>
