@@ -1,6 +1,7 @@
 package ru.job4j.hsql;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -76,5 +77,10 @@ public class OrdersStoreTest {
         Order rsl = store.findById(first.getId());
 
         assertThat(rsl.getDescription(), is("newDescription"));
+    }
+
+    @After
+    public void clear() throws SQLException {
+        pool.getConnection().prepareStatement("DROP TABLE orders").executeUpdate();
     }
 }
